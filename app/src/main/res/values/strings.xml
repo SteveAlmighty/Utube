@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Utube</string>
+    <string name="error_request_timeout">request timeout</string>
+    <string name="error_too_many_requests">too many request</string>
+    <string name="error_no_internet">no internet</string>
+    <string name="error_unknown">unknown</string>
+    <string name="error_serialization">serialization error</string>
+    <string name="close_hint">close hint</string>
+    <string name="search_youtube">search placeholder</string>
+    <string name="search_placeholder">search youtube</string>
+</resources>

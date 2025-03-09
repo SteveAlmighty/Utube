@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "580931523940",
+    "project_id": "utubeapp-631e7",
+    "storage_bucket": "utubeapp-631e7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580931523940:android:2d71773417f0ae2ae45671",
+        "android_client_info": {
+          "package_name": "com.example.utube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580931523940-0e4vtuptm8eoo6gnov5u9jf57vkmpprd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.utube",
+            "certificate_hash": "0c47440324e4975dde251d00ba9a70361b52dbc7"
+          }
+        },
+        {
+          "client_id": "580931523940-lihcnmnlcns6enep29fj1rt7lppffdcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUH9f1lhdbqv_k-5OlCVQEg2hk7thEqJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580931523940-lihcnmnlcns6enep29fj1rt7lppffdcf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

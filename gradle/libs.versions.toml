@@ -1,0 +1,156 @@
+[versions]
+agp = "8.8.1"
+core = "12.1.0"
+hiltNavigationCompose = "1.2.0"
+kotlin = "2.0.20"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.10.0"
+composeBom = "2025.02.00"
+coil3 = "3.0.0-rc02"
+desugar-jdk-libs = "2.1.4"
+ktor = "3.0.0"
+ksp = "2.0.20-1.0.24"
+koin = "3.5.6"
+material3-adaptive = "1.0.0"
+compose-material-icons-extended = "1.7.8"
+playServicesAuth = "21.3.0"
+retrofitVersion = "2.11.0"
+roomVersion = "2.6.1"
+sqlite = "2.5.0-beta01"
+room = "2.6.1"
+navigationCompose = "2.8.7"
+firebaseBom = "33.9.0"
+googleGmsGoogleServices = "4.4.2"
+runtimeLivedata = "1.7.8"
+retrofit = "2.11.0"
+squareupOkhttpVersion = "5.0.0-alpha.2"
+hiltVersion = "2.50"
+roomRuntimeAndroid = "2.7.0-rc01"
+
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+com-squareup-okhttp3-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "squareupOkhttpVersion" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
+core = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "core" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltVersion" }
+
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "squareupOkhttpVersion" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar-jdk-libs" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-compose-material3-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation", version.ref = "material3-adaptive" }
+compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose-material-icons-extended" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil-network-ktor2 = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coil3" }
+coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }
+coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+retrofit-v2110 = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics" }
+firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-messaging-ktx = { module = "com.google.firebase:firebase-messaging" }
+firebase-perf-ktx = { module = "com.google.firebase:firebase-perf" }
+firebase-config-ktx = { module = "com.google.firebase:firebase-config" }
+firebase-auth-ktx = { module = "com.google.firebase:firebase-auth" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
+androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+
+kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref ="ksp" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref ="hiltVersion" }
+
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+
+room = { id = "androidx.room", version.ref = "room" }
+
+[bundles]
+
+firebase = [
+    "firebase-analytics-ktx",
+    "firebase-auth-ktx"
+]
+
+compose = [
+    "androidx-activity-compose",
+    "androidx-lifecycle-runtime-compose",
+    "androidx-lifecycle-viewmodel-compose",
+    "androidx-material3",
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling-preview",
+    "androidx-compose-material3-adaptive-navigation",
+    "compose-material-icons-extended",
+    "androidx-navigation-compose",
+    "androidx-runtime-livedata"
+]
+compose-debug = [
+    "androidx-ui-tooling",
+    "androidx-ui-test-manifest",
+]
+koin = [
+    "koin-core",
+    "koin-android",
+    "koin-androidx-compose"
+]
+ktor = [
+    "ktor-client-cio",
+    "ktor-client-content-negotiation",
+    "ktor-client-core",
+    "ktor-client-logging",
+    "ktor-serialization-kotlinx-json"
+]
+coil = [
+    "coil-compose",
+    "coil-compose-core",
+    "coil-network-ktor2",
+    "coil-network-ktor3",
+    "coil-mp"
+]
