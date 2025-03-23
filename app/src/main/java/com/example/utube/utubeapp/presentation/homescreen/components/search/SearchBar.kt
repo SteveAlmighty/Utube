@@ -13,6 +13,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -36,6 +37,12 @@ fun SearchBar(
             onValueChange =  onSearchQueryChanged ,
             modifier = Modifier.fillMaxWidth(),
             placeholder = { Text(text = stringResource(R.string.search_placeholder)) },
+            colors = TextFieldDefaults.colors(
+                focusedTextColor = MaterialTheme.colorScheme.surfaceVariant,
+                focusedContainerColor =MaterialTheme.colorScheme.onBackground,
+                unfocusedTextColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedContainerColor = MaterialTheme.colorScheme.onBackground
+                ),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Search,
@@ -64,7 +71,7 @@ fun SearchBar(
                         Icon(
                             imageVector = Icons.Filled.Clear,
                             contentDescription = stringResource(R.string.close_hint),
-                            tint = MaterialTheme.colorScheme.onSurface
+                            tint = MaterialTheme.colorScheme.surfaceVariant,
                         )
                     }
                 }

@@ -20,9 +20,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Comment
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.PlaylistAdd
+import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,6 +40,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -98,9 +101,10 @@ fun VideoDetailScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
+                .background(MaterialTheme.colorScheme.onBackground)
                 .verticalScroll(rememberScrollState())
         ) {
+            Spacer(modifier = Modifier.height(15.dp))
             // Video Player
             YoutubePlayer(
                 modifier = Modifier
@@ -121,7 +125,7 @@ fun VideoDetailScreen(
                     text = state.video.snippet.title,
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.surfaceVariant
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -131,30 +135,50 @@ fun VideoDetailScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Text(
-                            text = formatNumber(state.video.statistics.viewCount.toLong()) + " views",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
                         Row {
-                            IconButton(onClick = {onAction(VideoDetailAction.OnFavoriteClick)}) {
-                                Icon(
-                                    imageVector = Icons.Filled.Favorite,
-                                    contentDescription = "Add to Favorites",
-                                    tint = if (state.isFavorite) Color.Red else MaterialTheme.colorScheme.onBackground,
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            }
-                            Spacer(modifier = Modifier.width(8.dp))
-                            IconButton(onClick = { isAddedToPlaylist = !isAddedToPlaylist }) {
-                                Icon(
-                                    imageVector = Icons.Filled.PlaylistAdd,
-                                    contentDescription = "Add to Playlist",
-                                    tint = if (isAddedToPlaylist) Color.Blue else MaterialTheme.colorScheme.onBackground,
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            }
+                            Icon(
+                                imageVector = Icons.Filled.Favorite,
+                                contentDescription = "Likes",
+                                tint = MaterialTheme.colorScheme.surfaceVariant,
+                                modifier = Modifier.size(24.dp)
+                            )
+
+                            Text(
+                                text = formatNumber(state.video.statistics.likeCount.toLong()),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.surfaceVariant
+                            )
                         }
+                        Row {
+                            Icon(
+                                imageVector = Icons.Filled.RemoveRedEye,
+                                contentDescription = "Views",
+                                tint = MaterialTheme.colorScheme.surfaceVariant,
+                                modifier = Modifier.size(24.dp)
+                            )
+
+                            Text(
+                                text = formatNumber(state.video.statistics.viewCount.toLong()),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.surfaceVariant
+                            )
+                        }
+                        Row {
+                            Icon(
+                                imageVector = Icons.Filled.Comment,
+                                contentDescription = "comment",
+                                tint = MaterialTheme.colorScheme.surfaceVariant,
+                                modifier = Modifier.size(24.dp)
+                            )
+
+                            Text(
+                                text = formatNumber(state.video.statistics.commentCount.toLong()),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.surfaceVariant
+                            )
+                        }
+
+
                     }
 
 
@@ -164,15 +188,28 @@ fun VideoDetailScreen(
                 Text(
                     text = state.video.snippet.description,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    maxLines = 5,
+                    overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(15.dp))
 
-                    Text(
-                        text = "Comments: ${state.video.statistics.commentCount}",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                ) {
+                    IconButton(onClick = {onAction(VideoDetailAction.OnFavoriteClick)}) {
+                        Icon(
+                            imageVector = Icons.Filled.Favorite,
+                            contentDescription = "Add to Favorites",
+                            tint = if (state.isFavorite) Color.Red else MaterialTheme.colorScheme.surfaceVariant,
+                            modifier = Modifier.size(34.dp)
+                        )
+                    }
+
+                }
+
 
             }
         }
@@ -183,25 +220,3 @@ fun formatNumber(number: Long): String {
     return NumberFormat.getNumberInstance(Locale.getDefault()).format(number)
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun VideoDetailScreenPreview() {
-//    val videoItem = Video(
-//        id = "videoId",
-//        snippet = VideoSnippet(
-//            publishedAt = "2023-01-01T00:00:00Z",
-//            channelId = "channelId",
-//            title = "Video Title",
-//            description = "Video Description",
-//            channelTitle = "Channel Title",
-//        ),
-//        statistics = VideoStatistics(
-//            viewCount = "1000000",
-//            likeCount = "10000",
-//            favoriteCount = "100",
-//            commentCount = "500"
-//        ),
-//        player = Player(embedHtml = "\u003ciframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/ma67yOdMQfs\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003e\u003c/iframe\u003e")
-//    )
-//    VideoDetailScreen(videoItem = videoItem)
-//}

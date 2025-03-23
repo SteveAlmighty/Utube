@@ -1,7 +1,9 @@
 package com.example.utube.utubeapp.presentation.homescreen
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import com.example.utube.utubeapp.presentation.homescreen.components.search.List
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -65,15 +67,11 @@ fun HomeScreen(
         }
     }
 
-    var searchText by remember { mutableStateOf("") }
-    var selectedTabIndex by remember { mutableIntStateOf(0) }
-
-    val tabs = listOf("Playlist", "Favorites")
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .background(MaterialTheme.colorScheme.onBackground)
     ) {
         Spacer(modifier = Modifier.height(36.dp))
 
@@ -83,16 +81,13 @@ fun HomeScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "Home",
-                style = MaterialTheme.typography.headlineMedium
-            )
 
             // Search Bar
             IconButton(onClick = {navController.navigate("searchscreen")}) {
                 Icon(
                     imageVector = Icons.Filled.Search,
-                    contentDescription = "Search for videos"
+                    contentDescription = "Search for videos",
+                    tint = MaterialTheme.colorScheme.surfaceVariant
                 )
             }
 
@@ -102,87 +97,52 @@ fun HomeScreen(
             IconButton(onClick =  {authViewModel.signout()}) {
                 Icon(
                     imageVector = Icons.Filled.ExitToApp,
-                    contentDescription = "Sign Out"
+                    contentDescription = "Sign Out",
+                    tint = MaterialTheme.colorScheme.surfaceVariant
                 )
             }
         }
+        Text(
+            text = "   Favourite Videos",
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.surfaceVariant
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Tab Row
-        TabRow(selectedTabIndex = selectedTabIndex) {
-            tabs.forEachIndexed { index, title ->
-                Tab(
-                    text = { Text(title) },
-                    selected = selectedTabIndex == index,
-                    onClick = { selectedTabIndex = index }
-                )
-            }
-        }
+        FavoritesScreen(
+            favoriteVideos = state.favoriteVideos,
+            onAction = { action ->
+                when (action) {
+                    is SearchAction.OnFavouriteVideoClick ->  (action.video)
+                    else -> Unit
+                }
+                viewModel.onAction(action)
+            },
+            navController = navController
+            )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Content based on selected tab
-        when (selectedTabIndex) {
-            0 -> PlaylistScreen()
-            1 -> FavoritesScreen(state.favoriteVideos)
-        }
     }
 }
 
-@Composable
-fun PlaylistScreen() {
-    Text(text = "Playlist Screen Content", style = MaterialTheme.typography.bodyLarge)
-}
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun FavoritesScreen(
-    favoriteVideos: List<FavoriteVideo>
+    favoriteVideos: List<FavoriteVideo>,
+    onAction: (SearchAction) -> Unit,
+    navController: NavController,
     ) {
     val searchResultsListState: LazyListState = rememberLazyListState()
     FavoriteList(
         searchResult = favoriteVideos,
         onSearchResultClick = {
-
+            onAction(SearchAction.OnFavouriteVideoClick(it))
         },
         modifier = Modifier.fillMaxSize(),
-        scrollState = searchResultsListState
+        scrollState = searchResultsListState,
+        navController = navController,
     )
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun HomeScreenPreview() {
-//    HomeScreen()
-//}
-
-//@Composable
-//fun HomeScreen(
-//    modifier: Modifier = Modifier,
-//    navController: NavController,
-//    authViewModel: AuthViewModel
-//){
-//    val authState = authViewModel.authState.observeAsState()
-//
-//    LaunchedEffect(authState.value) {
-//        when(authState.value){
-//            is AuthState.Unauthenticated -> navController.navigate("login")
-//            else -> Unit
-//        }
-//    }
-//
-//    Column(
-//        modifier = modifier.fillMaxSize(),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        Text(text = "Home Page", fontSize = 32.sp)
-//
-//        TextButton(onClick = {
-//            authViewModel.signout()
-//        }) {
-//            Text(text = "Sign out")
-//        }
-//    }
-//}

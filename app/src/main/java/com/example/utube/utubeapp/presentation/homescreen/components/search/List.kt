@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.utube.utubeapp.domain.model.FavoriteVideo
 import com.example.utube.utubeapp.domain.model.SearchResult
 
@@ -62,6 +63,7 @@ fun List(
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun FavoriteList(
+    navController: NavController,
     searchResult: List<FavoriteVideo>?,
     onSearchResultClick: (FavoriteVideo) -> Unit,
     modifier: Modifier = Modifier,
@@ -86,7 +88,10 @@ fun FavoriteList(
                         .widthIn(max = 700.dp)
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
-                    onClick = { onSearchResultClick(searchResult) }
+                    onClick = {
+                        onSearchResultClick(searchResult)
+                        navController.navigate("videodetailscreen/${searchResult.id}")
+                    }
                 )
             }
         }else {

@@ -1,6 +1,7 @@
 package com.example.utube.utubeapp.presentation.log_in
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -67,7 +68,8 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .background(MaterialTheme.colorScheme.onBackground)
+        ,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -99,7 +101,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         TextButton(onClick = {}) {
-            Text("Forgot Password?")
+            Text("Forgot Password?", color = MaterialTheme.colorScheme.surfaceVariant)
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -111,13 +113,14 @@ fun LoginScreen(
             enabled = authState.value != AuthState.Loading ,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Login")
+            Text("Login",  color = MaterialTheme.colorScheme.surfaceVariant)
+
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         TextButton(onClick = {navController.navigate("signup")}) {
-            Text("Don't have an account, Signup")
+            Text("Don't have an account, Signup", color = MaterialTheme.colorScheme.surfaceVariant)
         }
     }
 }

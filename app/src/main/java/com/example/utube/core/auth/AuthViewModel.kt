@@ -32,7 +32,7 @@ class AuthViewModel @Inject constructor(
 
     fun login(email : String,password : String){
 
-        if(isEmailValid(email,password)){
+        if(isEmailInvalid(email,password)){
             sendError("Email or password can't be empty")
             return
         }
@@ -48,7 +48,7 @@ class AuthViewModel @Inject constructor(
             }
     }
 
-    private fun isEmailValid(email: String, password: String): Boolean {
+    private fun isEmailInvalid(email: String, password: String): Boolean {
         return email.isEmpty() || password.isEmpty()
     }
 
@@ -58,7 +58,7 @@ class AuthViewModel @Inject constructor(
 
     fun signup(email : String,password : String){
 
-        if(isEmailValid(email,password)){
+        if(isEmailInvalid(email,password)){
             sendError("Email or password can't be empty")
             return
         }

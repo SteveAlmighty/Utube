@@ -19,13 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
-//val appModule =  module {
-//    single { HttpClientFactory.create(CIO.create()) }
-//    singleOf(::RemoteSearchDataSource).bind<SearchDataSource>()
-//
-//    viewModelOf(::AuthViewModel)
-//    viewModelOf(::SearchViewModel)
-//}
+
 
 @Module
 @InstallIn(SingletonComponent::class)

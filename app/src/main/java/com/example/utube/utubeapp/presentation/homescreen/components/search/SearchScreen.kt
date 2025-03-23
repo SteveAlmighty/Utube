@@ -83,7 +83,7 @@ fun SearchScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.onBackground)
             .statusBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -105,7 +105,7 @@ fun SearchScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-            color = MaterialTheme.colorScheme.background,
+            color = MaterialTheme.colorScheme.onBackground,
             shape = RoundedCornerShape(
                 topStart = 32.dp,
                 topEnd = 32.dp

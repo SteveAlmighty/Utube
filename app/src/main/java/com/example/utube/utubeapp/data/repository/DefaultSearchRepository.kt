@@ -1,22 +1,17 @@
 package com.example.utube.utubeapp.data.repository
 
 import com.example.utube.utubeapp.data.database.FavoriteVideoDao
-import com.example.utube.utubeapp.data.database.VideoEntity
 import com.example.utube.utubeapp.data.mapper.toFavoriteVideo
 import com.example.utube.utubeapp.data.mapper.toVideoEntity
 import com.example.utube.utubeapp.data.networking.YtApi
 import com.example.utube.utubeapp.data.networking.dtos.SearchDto
 import com.example.utube.utubeapp.data.networking.dtov.VideoDto
 import com.example.utube.utubeapp.domain.model.FavoriteVideo
-import com.example.utube.utubeapp.domain.model.Video
 import com.example.utube.utubeapp.domain.repository.YtRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import retrofit2.Response
 import javax.inject.Inject
-
-
-
 
 
 class YtRepositoryImpl @Inject constructor(

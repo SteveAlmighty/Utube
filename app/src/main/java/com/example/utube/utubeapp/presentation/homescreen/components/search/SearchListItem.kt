@@ -42,7 +42,7 @@ fun SearchItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.onSecondary)
+                .background(MaterialTheme.colorScheme.onBackground)
                 .padding(vertical = 16.dp, horizontal = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -64,16 +64,19 @@ fun SearchItem(
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Bold,
                     maxLines = 2,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = snippet.channelTitle,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "Uploaded ${formatIso8601Time(snippet.publishedAt)}",
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     style = MaterialTheme.typography.bodySmall
                 )
             }
@@ -96,7 +99,7 @@ fun FavoriteItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.onSecondary)
+                .background(MaterialTheme.colorScheme.onBackground)
                 .padding(vertical = 16.dp, horizontal = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -116,6 +119,7 @@ fun FavoriteItem(
                 Text(
                     text = favoriteVideo.title,
                     style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     fontWeight = FontWeight.Bold,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -123,11 +127,13 @@ fun FavoriteItem(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = favoriteVideo.channelTitle,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "Uploaded ${formatIso8601Time(favoriteVideo.publishedAt)}",
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     style = MaterialTheme.typography.bodySmall
                 )
             }
